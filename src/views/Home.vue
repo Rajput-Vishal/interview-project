@@ -8,7 +8,7 @@
               <div class="card">
                 <header class="card-header">
                   <span class="heading text-left">Users</span>
-                  <button class="btn btn-info btn-sm float-end" @click="openCreateUserModal()">Create User</button>
+                  <button class="btn btn-info btn-sm float-end" @click="openCreateUserModal(true)">Create User</button>
                 </header>
                 <div class="card-body">
                   <UserList />
@@ -40,8 +40,8 @@ export default {
     }
   },
   methods:{
-    openCreateUserModal(){
-      this.isCreateUserModalOpen = true;
+    openCreateUserModal(val){
+      this.isCreateUserModalOpen = val;
     }
   }
 }

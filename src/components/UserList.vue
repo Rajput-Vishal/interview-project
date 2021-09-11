@@ -31,8 +31,8 @@
           <td class="">{{user.phone_number}}</td>
           <td><span class="badge badge-success">Active</span></td>
           <td>
-            <button class="btn btn-sm btn-success edit-button">Edit</button>
-            <button class="btn btn-danger btn-sm">Delete</button></td>
+            <button class="btn btn-sm btn-success edit-button" @click="editDetails(user.id)">Edit</button>
+            <button class="btn btn-danger btn-sm" @click="deleteUser(user.id)">Delete</button></td>
         </tr>
       </tbody>
     </table>
@@ -55,6 +55,17 @@ export default {
   mounted(){
     this.$store.dispatch('UserData/userList')
   },
+  methods:{
+    editDetails(id) {
+      this.$router.push({name: 'EditPage', params: {id: id}});
+    },
+    deleteUser(id) {
+      var result = confirm("Are you sure to delete this user?");
+      if(result){
+        this.$store.dispatch('UserData/deleteUser', id)
+      }
+    }
+  }
 }
 </script>
 
